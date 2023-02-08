@@ -1,0 +1,12 @@
+.pokemon_card{
+    border: 1px solid rgb(54, 49, 49);
+    border-radius: 0.25rem;
+    display: block;
+}
+.pokemon_images{
+    height: 100px;
+}
+
+.fundo{
+    background-color: rgb(58, 57, 57);
+}

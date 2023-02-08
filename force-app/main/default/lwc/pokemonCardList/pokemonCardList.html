@@ -1,0 +1,56 @@
+<template>
+    
+    <lightning-card title="Pokemons" icon-name="utility:animal_and_nature">
+    <div class="fundo">
+        <!--Caixa de Pesquisa Inicio-->
+        <lightning-input type="search"
+                        onchange={handlerSearch}
+                        variant="label-hidden"
+                        class="slds-vars-m-bottom_small slds-p-left_medium slds-p-rigth_medium"
+                        placeholder="Pesquise por seu pokemon"
+                        value={searchWords}>
+                    </lightning-input>
+        <!--Caixa de Pesquisa Fim-->
+        
+        <template if:true={pokemons}>
+            <template if:false={isSearchAvaliable}>
+            <lightning-layout multiple-rows="true">
+                <template for:each={pokemons} for:item="pokemonsdetails">
+                    <lightning-layout-item key={pokemonsdetails.Id} size="3" class="slds-var-p-around_x-small">
+                        <!--Inicio cartao pokemon-->
+                        <lightning-card title={pokemonsdetails.Name} class="pokemon_card">
+                            <div class="slds-var-p-horizontal_small">
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-col slds-size_8-of-12">
+                                        <img src={pokemonsdetails.Images__c} alt="pokemon" class="pokemon_images"/>
+                                    </div>
+                                        
+                                    <div class="slds-col slds-size_4-of-12">
+                                        <p class="slds-var-m-bottom_xx-small">Height: {pokemonsdetails.Height__c}</p>
+                                        <p class="slds-var-m-bottom_xx-small">Weigth: {pokemonsdetails.Weight__c}</p>
+                                        <p class="slds-var-m-bottom_xx-small"><strong>Trainer: {pokemonsdetails.Trainer__r.FirstName}</strong></p>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </lightning-card>
+                        <!--FIM cartao pokemon-->
+                    </lightning-layout-item>
+                </template>
+
+            </lightning-layout>
+        </template>
+
+        <template if:true={isSearchAvaliable}>
+            Não Encontramos a sua pesquisa ...
+        </template>
+
+        </template>
+
+        <template if:true={error}>
+
+        </template>
+    </div>        
+    </lightning-card>
+
+</template>
